@@ -85,6 +85,7 @@ export default function App() {
         <span className="a3" />
       </div>
       <div className="grid-floor" aria-hidden="true" />
+      <div className="scanlines" aria-hidden="true" />
       <div className="noise" />
       <Navbar />
       <main>

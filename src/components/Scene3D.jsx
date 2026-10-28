@@ -19,8 +19,8 @@ function CoreSphere() {
       <mesh ref={mesh}>
         <icosahedronGeometry args={[1.55, 48]} />
         <MeshDistortMaterial
-          color="#7c5cff"
-          emissive="#2a1a66"
+          color="#00c46a"
+          emissive="#013a20"
           emissiveIntensity={0.55}
           metalness={0.75}
           roughness={0.18}
@@ -30,7 +30,7 @@ function CoreSphere() {
       </mesh>
       <mesh ref={wire} scale={1.28}>
         <icosahedronGeometry args={[1.55, 1]} />
-        <meshBasicMaterial color="#00e0c6" wireframe transparent opacity={0.22} />
+        <meshBasicMaterial color="#00ff88" wireframe transparent opacity={0.2} />
       </mesh>
     </group>
   );
@@ -67,7 +67,7 @@ function Ring() {
   return (
     <mesh ref={ref} position={[1.6, 0.1, 0]} rotation={[Math.PI / 2.4, 0, 0]}>
       <torusGeometry args={[2.55, 0.012, 12, 128]} />
-      <meshBasicMaterial color="#00e0c6" transparent opacity={0.5} />
+      <meshBasicMaterial color="#00e5ff" transparent opacity={0.5} />
     </mesh>
   );
 }
@@ -91,39 +91,39 @@ export default function Scene3D() {
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.35} />
-      <pointLight position={[6, 4, 4]} intensity={40} color="#7c5cff" />
-      <pointLight position={[-5, -3, 3]} intensity={26} color="#00e0c6" />
+      <pointLight position={[6, 4, 4]} intensity={40} color="#00ff88" />
+      <pointLight position={[-5, -3, 3]} intensity={26} color="#00e5ff" />
       <spotLight position={[0, 6, 2]} angle={0.5} penumbra={1} intensity={30} color="#ffffff" />
 
       <ParallaxRig>
         <CoreSphere />
         <Ring />
-        <Orbiter radius={2.55} speed={0.5} size={0.16} color="#00e0c6" tilt={0.5} offset={0} />
-        <Orbiter radius={2.55} speed={0.5} size={0.12} color="#ff5c8a" tilt={0.5} offset={Math.PI} />
-        <Orbiter radius={3.1} speed={-0.32} size={0.2} color="#7c5cff" tilt={-0.35} offset={1.4} />
+        <Orbiter radius={2.55} speed={0.5} size={0.16} color="#00ff88" tilt={0.5} offset={0} />
+        <Orbiter radius={2.55} speed={0.5} size={0.12} color="#d4ff00" tilt={0.5} offset={Math.PI} />
+        <Orbiter radius={3.1} speed={-0.32} size={0.2} color="#00e5ff" tilt={-0.35} offset={1.4} />
 
         <Float speed={2.4} rotationIntensity={1.6} floatIntensity={2.2}>
           <mesh position={[-3.4, 1.6, -1]}>
             <torusKnotGeometry args={[0.34, 0.11, 110, 14]} />
-            <meshStandardMaterial color="#ff5c8a" metalness={0.8} roughness={0.25} emissive="#ff5c8a" emissiveIntensity={0.25} />
+            <meshStandardMaterial color="#d4ff00" metalness={0.8} roughness={0.25} emissive="#d4ff00" emissiveIntensity={0.25} />
           </mesh>
         </Float>
 
         <Float speed={1.8} rotationIntensity={1.2} floatIntensity={2.6}>
           <mesh position={[-2.6, -1.9, -0.5]}>
             <dodecahedronGeometry args={[0.3, 0]} />
-            <meshStandardMaterial color="#00e0c6" metalness={0.8} roughness={0.3} emissive="#00e0c6" emissiveIntensity={0.3} />
+            <meshStandardMaterial color="#00ff88" metalness={0.8} roughness={0.3} emissive="#00ff88" emissiveIntensity={0.3} />
           </mesh>
         </Float>
 
         <Float speed={2} rotationIntensity={1.4} floatIntensity={2}>
           <mesh position={[4.2, -1.7, -1.4]}>
             <icosahedronGeometry args={[0.26, 0]} />
-            <meshStandardMaterial color="#7c5cff" metalness={0.85} roughness={0.2} emissive="#7c5cff" emissiveIntensity={0.35} />
+            <meshStandardMaterial color="#00e5ff" metalness={0.85} roughness={0.2} emissive="#00e5ff" emissiveIntensity={0.35} />
           </mesh>
         </Float>
 
-        <Sparkles count={170} scale={[14, 8, 8]} size={2.2} speed={0.32} color="#8afff0" opacity={0.7} />
+        <Sparkles count={170} scale={[14, 8, 8]} size={2.2} speed={0.32} color="#a6ffd6" opacity={0.7} />
       </ParallaxRig>
     </Canvas>
   );
