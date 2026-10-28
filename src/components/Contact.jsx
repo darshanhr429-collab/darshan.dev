@@ -58,9 +58,9 @@ export default function Contact() {
                 </>
               );
               return item.href ? (
-                <a className="contact-info-card glass" href={item.href} key={item.label}>{inner}</a>
+                <a className="contact-info-card glass tilt" href={item.href} key={item.label}>{inner}</a>
               ) : (
-                <div className="contact-info-card glass" key={item.label}>{inner}</div>
+                <div className="contact-info-card glass tilt" key={item.label}>{inner}</div>
               );
             })}
             <div className="hero-socials" style={{ marginTop: '28px' }}>

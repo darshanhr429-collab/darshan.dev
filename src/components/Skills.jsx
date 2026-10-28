@@ -48,7 +48,7 @@ export default function Skills() {
       <div className="container">
         <div className="skills-grid">
           {GROUPS.map((g) => (
-            <div className="skill-group glass reveal" key={g.title}>
+            <div className="skill-group glass tilt reveal" key={g.title}>
               <div className="icon"><FontAwesomeIcon icon={g.icon} /></div>
               <h3>{g.title}</h3>
               <div className="chips">

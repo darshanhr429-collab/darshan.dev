@@ -29,6 +29,29 @@ export default function App() {
     );
     document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
 
+    // 3D tilt on hover
+    const tiltEls = document.querySelectorAll('.tilt');
+    const cleanups = [];
+    tiltEls.forEach((el) => {
+      const onMove = (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--rx', `${(-py * 9).toFixed(2)}deg`);
+        el.style.setProperty('--ry', `${(px * 11).toFixed(2)}deg`);
+      };
+      const onLeave = () => {
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      };
+      el.addEventListener('pointermove', onMove);
+      el.addEventListener('pointerleave', onLeave);
+      cleanups.push(() => {
+        el.removeEventListener('pointermove', onMove);
+        el.removeEventListener('pointerleave', onLeave);
+      });
+    });
+
     let ticking = false;
 
     // progress bar + back-to-top
@@ -49,12 +72,19 @@ export default function App() {
     return () => {
       window.removeEventListener('scroll', onScroll);
       obs.disconnect();
+      cleanups.forEach((fn) => fn());
     };
   }, []);
 
   return (
     <>
       <div className="progress-bar" ref={progressRef} />
+      <div className="aurora" aria-hidden="true">
+        <span className="a1" />
+        <span className="a2" />
+        <span className="a3" />
+      </div>
+      <div className="grid-floor" aria-hidden="true" />
       <div className="noise" />
       <Navbar />
       <main>

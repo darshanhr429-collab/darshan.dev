@@ -65,15 +65,15 @@ export default function About() {
               code, you'll find me solving DSA problems, exploring open source, or tweaking shaders way past bedtime.
             </p>
             <div className="about-stats">
-              <div className="stat-card glass">
+              <div className="stat-card glass tilt">
                 <div className="stat-num"><Counter target={15} suffix="+" /></div>
                 <div className="stat-label">Projects Built</div>
               </div>
-              <div className="stat-card glass">
+              <div className="stat-card glass tilt">
                 <div className="stat-num"><Counter target={20} suffix="+" /></div>
                 <div className="stat-label">Technologies</div>
               </div>
-              <div className="stat-card glass">
+              <div className="stat-card glass tilt">
                 <div className="stat-num"><Counter target={500} suffix="+" /></div>
                 <div className="stat-label">DSA Problems</div>
               </div>

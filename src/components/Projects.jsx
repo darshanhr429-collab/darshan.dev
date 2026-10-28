@@ -56,7 +56,7 @@ export default function Projects() {
         </div>
         <div className="projects-grid">
           {PROJECTS.map((p) => (
-            <article className="project-card glass reveal" key={p.num}>
+            <article className="project-card glass tilt reveal" key={p.num}>
               <div className="project-top">
                 <span className="project-num">/{p.num}</span>
                 <div className="project-links">
