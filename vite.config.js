@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/darshan.dev/',
+  base: process.env.GITHUB_ACTIONS ? '/darshan.dev/' : '/',
   server: { port: 5173, open: false },
 });

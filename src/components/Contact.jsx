@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faLocationDot, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedinIn, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+
+const EMAIL = 'darshanhr429@gmail.com';
+const GITHUB_URL = 'https://github.com/darshanhr429-collab';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/darshan-h-r-2ba67137b/';
 
 const INFO = [
-  { icon: faEnvelope, label: 'Email', value: 'darshanhr.dev@gmail.com', href: 'mailto:darshanhr.dev@gmail.com' },
-  { icon: faPhone, label: 'Phone', value: '+91 98765 43210', href: 'tel:+919876543210' },
+  { icon: faEnvelope, label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
+  { icon: faPhone, label: 'Phone', value: '+91 86604 60015', href: 'tel:+918660460015' },
   { icon: faLocationDot, label: 'Location', value: 'Karnataka, India', href: null },
 ];
 
@@ -24,7 +28,7 @@ export default function Contact() {
     }
     const subject = encodeURIComponent(`Portfolio message from ${name}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:darshanhr.dev@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
     setStatus('✓ opening your mail app…');
     setForm({ name: '', email: '', message: '' });
   };
@@ -60,10 +64,8 @@ export default function Contact() {
               );
             })}
             <div className="hero-socials" style={{ marginTop: '28px' }}>
-              <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={faGithub} /></a>
-              <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedinIn} /></a>
-              <a href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
-              <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X"><FontAwesomeIcon icon={faXTwitter} /></a>
+              <a href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={faGithub} /></a>
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedinIn} /></a>
             </div>
           </div>
           <form className="contact-form glass reveal" onSubmit={onSubmit}>

@@ -9,8 +9,8 @@ const PROJECTS = [
     title: '3D Portfolio Experience',
     desc: 'An immersive personal portfolio built with React Three Fiber — animated particle fields, distorted geometry and mouse-parallax scenes rendered in real time on the web.',
     tags: ['React', 'Three.js', 'R3F', 'GSAP'],
-    github: 'https://github.com/',
-    live: 'https://github.com/',
+    github: 'https://github.com/darshanhr429-collab',
+    live: 'https://github.com/darshanhr429-collab',
   },
   {
     num: '02',
@@ -18,8 +18,8 @@ const PROJECTS = [
     title: 'AI Study Assistant',
     desc: 'A smart study companion that summarizes notes, generates quizzes from uploaded material and tracks learning streaks — built for students, by a student.',
     tags: ['Python', 'Flask', 'OpenAI API', 'SQLite'],
-    github: 'https://github.com/',
-    live: 'https://github.com/',
+    github: 'https://github.com/darshanhr429-collab',
+    live: 'https://github.com/darshanhr429-collab',
   },
   {
     num: '03',
@@ -27,8 +27,8 @@ const PROJECTS = [
     title: 'Campus Connect',
     desc: 'A full-stack social platform for my college — event feeds, club pages, lost & found, and real-time chat with WebSockets. 300+ students signed up in the first month.',
     tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-    github: 'https://github.com/',
-    live: 'https://github.com/',
+    github: 'https://github.com/darshanhr429-collab',
+    live: 'https://github.com/darshanhr429-collab',
   },
   {
     num: '04',
@@ -36,8 +36,8 @@ const PROJECTS = [
     title: 'CodeQuest — Gamified DSA',
     desc: 'A gamified platform for practicing data structures with leaderboards, XP and timed challenges. Makes grinding LeetCode feel like playing a game.',
     tags: ['JavaScript', 'React', 'Firebase', 'Tailwind'],
-    github: 'https://github.com/',
-    live: 'https://github.com/',
+    github: 'https://github.com/darshanhr429-collab',
+    live: 'https://github.com/darshanhr429-collab',
   },
 ];
 
