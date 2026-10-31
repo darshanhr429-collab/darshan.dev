@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
 import Scene3D from './Scene3D.jsx';
+import { profile } from '../data/profile.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { faArrowDown, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faEnvelope, faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-const ROLES = ['Full-Stack Developer', '3D Web Enthusiast', 'Problem Solver', 'Open Source Learner', 'CS Engineering Student'];
 const TYPE_SPEED = 70;
 const ERASE_SPEED = 34;
 
-export default function Hero() {
+export default function Hero({ onResume }) {
   const [text, setText] = useState('');
   const [roleIdx, setRoleIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const word = ROLES[roleIdx];
+    const word = profile.roles[roleIdx];
     let timeout;
     if (!deleting && text === word) {
       timeout = setTimeout(() => setDeleting(true), 1700);
     } else if (deleting && text === '') {
       setDeleting(false);
-      setRoleIdx((i) => (i + 1) % ROLES.length);
+      setRoleIdx((i) => (i + 1) % profile.roles.length);
     } else {
       timeout = setTimeout(
         () => setText(word.slice(0, text.length + (deleting ? -1 : 1))),
@@ -36,31 +36,55 @@ export default function Hero() {
         <Scene3D />
       </div>
       <div className="hero-vignette" />
-      <div className="container hero-content">
-        <p className="hero-hello">{'// hello world, I am'}</p>
-        <h1 className="hero-name">
-          Darshan <span className="grad">H R</span>
-        </h1>
-        <p className="hero-role">
-          {'> '}<span className="typed">{text}</span>
-          <span className="cursor" />
-        </p>
-        <p className="hero-desc">
-          Computer Science engineering student crafting immersive web experiences — blending clean code,
-          3D graphics and thoughtful design to build things people remember.
-        </p>
-        <div className="hero-actions">
-          <a href="#projects" className="btn btn-primary">
-            View My Work <FontAwesomeIcon icon={faArrowDown} />
-          </a>
-          <a href="#contact" className="btn btn-ghost">
-            <FontAwesomeIcon icon={faEnvelope} /> Get In Touch
-          </a>
+      <div className="container hero-inner">
+        <div className="hero-content">
+          <p className="hero-status">
+            <span className="status-dot" /> {profile.availability}
+          </p>
+          <p className="hero-hello">{'// hello world, I am'}</p>
+          <h1 className="hero-name">
+            {profile.firstName} <span className="grad">{profile.lastName}</span>
+          </h1>
+          <p className="hero-role">
+            {'> '}<span className="typed">{text}</span>
+            <span className="cursor" />
+          </p>
+          <p className="hero-desc">{profile.intro}</p>
+          <div className="hero-actions">
+            <a href="#projects" className="btn btn-primary">
+              View My Work <FontAwesomeIcon icon={faArrowDown} />
+            </a>
+            <button type="button" className="btn btn-ghost" onClick={onResume}>
+              <FontAwesomeIcon icon={faFileArrowDown} /> Resume
+            </button>
+          </div>
+          <div className="hero-socials">
+            <a href={profile.links.github} target="_blank" rel="noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={faGithub} /></a>
+            <a href={profile.links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedinIn} /></a>
+            <a href={`mailto:${profile.email}`} aria-label="Email"><FontAwesomeIcon icon={faEnvelope} /></a>
+          </div>
         </div>
-        <div className="hero-socials">
-          <a href="https://github.com/darshanhr429-collab" target="_blank" rel="noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={faGithub} /></a>
-          <a href="https://www.linkedin.com/in/darshan-h-r-2ba67137b/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedinIn} /></a>
-          <a href="mailto:darshanhr429@gmail.com" aria-label="Email"><FontAwesomeIcon icon={faEnvelope} /></a>
+
+        <div className="hero-portrait-wrap">
+          <div className="hero-portrait tilt">
+            <span className="portrait-ring" aria-hidden="true" />
+            <div className="portrait-card">
+              <img src={profile.photo} alt={`Portrait of ${profile.fullName}`} />
+              <span className="portrait-light" aria-hidden="true" />
+            </div>
+            <div className="float-chip chip-a">
+              <b>B.E. CSE</b>
+              <span>2023 — 2027</span>
+            </div>
+            <div className="float-chip chip-b">
+              <b>500+</b>
+              <span>DSA problems</span>
+            </div>
+            <div className="float-chip chip-c">
+              <b>15+</b>
+              <span>projects shipped</span>
+            </div>
+          </div>
         </div>
       </div>
       <div className="scroll-hint">

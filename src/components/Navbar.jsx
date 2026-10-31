@@ -1,21 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
+import { navLinks } from '../data/profile.js';
 
-const LINKS = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'journey', label: 'Journey' },
-  { id: 'contact', label: 'Contact' },
-];
-
-export default function Navbar() {
+export default function Navbar({ onResume }) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const ticking = useRef(false);
 
   useEffect(() => {
+    const links = navLinks.map((l) => ({ id: l.href.slice(1) }));
     const onScroll = () => {
       if (ticking.current) return;
       ticking.current = true;
@@ -23,7 +16,7 @@ export default function Navbar() {
         setScrolled(window.scrollY > 40);
         const pos = window.scrollY + window.innerHeight * 0.35;
         let current = 'home';
-        for (const { id } of LINKS) {
+        for (const { id } of links) {
           const el = document.getElementById(id);
           if (el && el.offsetTop <= pos) current = id;
         }
@@ -49,22 +42,32 @@ export default function Navbar() {
             darshan<span>.dev</span>
           </a>
           <ul className="nav-links">
-            {LINKS.map(({ id, label }) => (
-              <li key={id}>
-                <a href={`#${id}`} className={active === id ? 'active' : ''}>{label}</a>
+            {navLinks.map(({ href, label }) => (
+              <li key={href}>
+                <a href={href} className={active === href.slice(1) ? 'active' : ''}>{label}</a>
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn btn-primary nav-cta">Hire Me</a>
+          <button type="button" className="btn btn-primary nav-cta" onClick={onResume}>Resume</button>
           <button className="hamburger" onClick={() => setMenuOpen(true)} aria-label="Open menu">☰</button>
         </div>
       </nav>
 
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <button className="mobile-close" onClick={() => setMenuOpen(false)} aria-label="Close menu">✕</button>
-        {LINKS.map(({ id, label }) => (
-          <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>
+        {navLinks.map(({ href, label }) => (
+          <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => {
+            setMenuOpen(false);
+            onResume();
+          }}
+        >
+          View Resume
+        </button>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { profile, stats } from '../data/profile.js';
 
 function Counter({ target, suffix }) {
   const ref = useRef(null);
@@ -49,13 +50,13 @@ export default function About() {
         <div className="about-grid">
           <div className="about-photo-wrap reveal">
             <div className="about-photo">
-              <img src="/assets/profile.png" alt="Darshan H R" />
-              <span className="badge"><FontAwesomeIcon icon={faLocationDot} /> Karnataka, India</span>
+              <img src={profile.photo} alt={profile.fullName} />
+              <span className="badge"><FontAwesomeIcon icon={faLocationDot} /> {profile.location}</span>
             </div>
           </div>
           <div className="about-text reveal">
             <p>
-              I'm <strong>Darshan H R</strong>, a Computer Science &amp; Engineering student with a passion for
+              I'm <strong>{profile.fullName}</strong>, a Computer Science &amp; Engineering student with a passion for
               building digital products that live on the web. What started as curiosity about how websites work
               grew into a deep love for <strong>full-stack development</strong> and <strong>3D interactive experiences</strong>.
             </p>
@@ -65,18 +66,12 @@ export default function About() {
               code, you'll find me solving DSA problems, exploring open source, or tweaking shaders way past bedtime.
             </p>
             <div className="about-stats">
-              <div className="stat-card glass tilt">
-                <div className="stat-num"><Counter target={15} suffix="+" /></div>
-                <div className="stat-label">Projects Built</div>
-              </div>
-              <div className="stat-card glass tilt">
-                <div className="stat-num"><Counter target={20} suffix="+" /></div>
-                <div className="stat-label">Technologies</div>
-              </div>
-              <div className="stat-card glass tilt">
-                <div className="stat-num"><Counter target={500} suffix="+" /></div>
-                <div className="stat-label">DSA Problems</div>
-              </div>
+              {stats.map((s) => (
+                <div className="stat-card glass tilt" key={s.label}>
+                  <div className="stat-num"><Counter target={s.value} suffix={s.suffix} /></div>
+                  <div className="stat-label">{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

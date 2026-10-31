@@ -103,14 +103,14 @@ export default function Scene3D() {
         <Orbiter radius={3.1} speed={-0.32} size={0.2} color="#7db4ff" tilt={-0.35} offset={1.4} />
 
         <Float speed={2.4} rotationIntensity={1.6} floatIntensity={2.2}>
-          <mesh position={[-3.4, 1.6, -1]}>
-            <torusKnotGeometry args={[0.34, 0.11, 110, 14]} />
+          <mesh position={[4.6, 2.9, -2]}>
+            <torusKnotGeometry args={[0.28, 0.09, 110, 14]} />
             <meshStandardMaterial color="#d4ff00" metalness={0.8} roughness={0.25} emissive="#d4ff00" emissiveIntensity={0.25} />
           </mesh>
         </Float>
 
         <Float speed={1.8} rotationIntensity={1.2} floatIntensity={2.6}>
-          <mesh position={[-2.6, -1.9, -0.5]}>
+          <mesh position={[-3.6, -2.2, -1.2]}>
             <dodecahedronGeometry args={[0.3, 0]} />
             <meshStandardMaterial color="#5c8bff" metalness={0.8} roughness={0.3} emissive="#5c8bff" emissiveIntensity={0.3} />
           </mesh>

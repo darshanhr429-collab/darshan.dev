@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faLocationDot, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { profile } from '../data/profile.js';
 
-const EMAIL = 'darshanhr429@gmail.com';
-const GITHUB_URL = 'https://github.com/darshanhr429-collab';
-const LINKEDIN_URL = 'https://www.linkedin.com/in/darshan-h-r-2ba67137b/';
+const EMAIL = profile.email;
+const GITHUB_URL = profile.links.github;
+const LINKEDIN_URL = profile.links.linkedin;
 
 const INFO = [
   { icon: faEnvelope, label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
-  { icon: faPhone, label: 'Phone', value: '+91 86604 60015', href: 'tel:+918660460015' },
-  { icon: faLocationDot, label: 'Location', value: 'Karnataka, India', href: null },
+  { icon: faPhone, label: 'Phone', value: profile.phone, href: profile.phoneHref },
+  { icon: faLocationDot, label: 'Location', value: profile.location, href: null },
 ];
 
 export default function Contact() {

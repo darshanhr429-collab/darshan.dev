@@ -4,14 +4,19 @@ import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Skills from './components/Skills.jsx';
 import Projects from './components/Projects.jsx';
+import Achievements from './components/Achievements.jsx';
 import Journey from './components/Journey.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import ProjectModal from './components/ProjectModal.jsx';
+import ResumeModal from './components/ResumeModal.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function App() {
   const [showTop, setShowTop] = useState(false);
+  const [activeProject, setActiveProject] = useState(null);
+  const [resumeOpen, setResumeOpen] = useState(false);
   const progressRef = useRef(null);
 
   useEffect(() => {
@@ -86,12 +91,13 @@ export default function App() {
       </div>
       <div className="grid-floor" aria-hidden="true" />
       <div className="noise" />
-      <Navbar />
+      <Navbar onResume={() => setResumeOpen(true)} />
       <main>
-        <Hero />
+        <Hero onResume={() => setResumeOpen(true)} />
         <About />
         <Skills />
-        <Projects />
+        <Projects onSelect={setActiveProject} />
+        <Achievements />
         <Journey />
         <Contact />
       </main>
@@ -103,6 +109,9 @@ export default function App() {
       >
         <FontAwesomeIcon icon={faArrowUp} />
       </button>
+
+      {activeProject && <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />}
+      {resumeOpen && <ResumeModal onClose={() => setResumeOpen(false)} />}
     </>
   );
 }
